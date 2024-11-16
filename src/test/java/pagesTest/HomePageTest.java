@@ -11,5 +11,11 @@ public void clickForgotUserIdTest() throws InterruptedException   {
 	homePage.clickForgotUserId();
 }
 
+@Test (enabled = true, priority = 2)
+public void clickUserIdTest() {
+	homePage.clickUserId();
+}
+
+
 
 }

@@ -25,4 +25,23 @@ public class HomePage {
 		Thread.sleep(4000); // After clicking
 	}
 	
+	
+	@FindBy(name = "user-d")
+	WebElement userId;
+	
+	// We used try-catch block to handle exception in this method
+		public void clickUserId() {
+			try {
+				Thread.sleep(4000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			userId.click();
+			try {
+				Thread.sleep(4000);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	
 }

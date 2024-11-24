@@ -1,11 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>ifzal.gov.cms.portal.aug2024</groupId>
-  <artifactId>ifzal.gov.cms.portal.aug2024</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>CMS Enterprise Portal Framework</name>
-  <description>This framework is about Portal of Center for Medicare and  Medicaid services</description>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ifzal.gov.cms.portal.aug2024</groupId>
+	<artifactId>ifzal.gov.cms.portal.aug2024</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>CMS Enterprise Portal Framework</name>
+	<description>This framework is about Portal of Center for Medicare and
+		Medicaid services</description>
+	<dependencies>
 		<!--https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<!-- Selenium Java dependency is used to get access of Java based
 		selenium-->
@@ -24,6 +27,16 @@
 			<artifactId>testng</artifactId>
 			<version>7.10.2</version>
 		</dependency>
+		
+		<!-- download from bonigarcia -->
+		<!-- when we use webdrivermanager, physical driver is not necessary -->
+		<!-- when we add a new dependency, don't build the framework, rather update project from maven -->
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>5.9.2</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>
@@ -50,14 +63,5 @@
 		</plugins>
 	</build>
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
 </project>

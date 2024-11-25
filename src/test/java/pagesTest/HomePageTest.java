@@ -31,7 +31,7 @@ public class HomePageTest extends BaseClass {
 			homePage.clickPassword();
 		}
 		
-		@Test (enabled = false)
+		@Test (enabled = true)
 		public void clickNewUserRegistrationTest() {
 			homePage.clickNewUserRegistration();
 		}
@@ -44,7 +44,7 @@ public class HomePageTest extends BaseClass {
 		}
 
 
-		@Test(enabled = false)
+		@Test(enabled = true)
 		public void inputTextInUserIdFieldTest () {
 			homePage.inputTextInUserIdField();
 		}
@@ -150,6 +150,26 @@ public class HomePageTest extends BaseClass {
 		@Test
 		public void use_of_isEnabled_in_login_test () { 
 			homePage.use_of_isEnabled_in_login();
+		}
+		
+		@Test
+		public void getMethodsOfThePageTest() {
+			homePage.getMethodsOfThePage();
+		}
+		
+		@Test
+		public void newUserRegistrationPageValidationTest() {
+			homePage.newUserRegistrationPageValidation();
+		}
+		
+		@Test
+		public void use_of_getAttribute_methodTest () {
+			homePage.use_of_getAttribute_method();
+		}
+		
+		@Test
+		public void use_of_clear_in_login_test() {
+			homePage.use_of_clear_in_login();
 		}
 		
 }

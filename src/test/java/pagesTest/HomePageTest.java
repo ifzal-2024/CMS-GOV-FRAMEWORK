@@ -172,4 +172,43 @@ public class HomePageTest extends BaseClass {
 			homePage.use_of_clear_in_login();
 		}
 		
+		@Test
+		public void use_of_navigate_method_test () {
+			homePage.use_of_navigate_method();
+		}
+		
+		
+		@Test()
+		public void use_of_mouse_hoverAction_on_ourLocations_test () {
+			homePage.use_of_mouse_hoverAction_on_ourLocations ();
+		}
+		
+		@Test
+		public void switch_between_window_test(){
+			homePage.switch_between_window();
+		}
+		
+		@Test() // Raw way
+		public void use_of_sendKeys_method_then_click_by_enter_key_of_the_laptop_test_01 () {
+			homePage.use_of_sendKeys_method_then_click_by_enter_key_of_the_laptop_01();
+		}
+		
+		@Test// common Actions way
+		public void use_of_sendKeys_method_then_click_by_enter_key_of_the_laptop_02_test () {
+			homePage.use_of_sendKeys_method_then_click_by_enter_key_of_the_laptop_02();
+		}
+		
+		
+		@Test
+		public void use_of_sendKeys_method_then_click_by_return_key_of_the_laptop_test () {
+			homePage.use_of_sendKeys_method_then_click_by_return_key_of_the_laptop();
+		}
+		
+		
+		@Test
+		public void use_of_sendKeys_method_then_click_by_tab_key_of_the_laptop_test () {
+			homePage.use_of_sendKeys_method_then_click_by_tab_key_of_the_laptop();
+			
+		}
+		
 }

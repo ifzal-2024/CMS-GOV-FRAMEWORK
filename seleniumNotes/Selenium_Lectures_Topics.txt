@@ -1,0 +1,9 @@
+
+Selenium-04 - day 06A from github Lecture :November 23,2024
+Topics covered: Edge Driver download , Anchor Tag href/  target_blank= opens a new page,
+Config.properties, getTitle(), Assert, getCurrentUrl(), get Text(), get Attribute(), clear()
+
+Selenium 05- GitHUb-Day 07 -Lect Nov. 24, 2024
+Topics: MouseHoverAction Actions actions, driver.navigate(), XPath: normalize-space(text)
+Xpath //parent::, xapth [()][1], driver.switchTo().window(child), DropDown Se;ect select SelctByvalue, selectByIndiex, SelectByVisibleText(), Header, subHeader, OtherHeader,
+SendKeys+Enter, SendKeys+ Return, SendKeys+Tab

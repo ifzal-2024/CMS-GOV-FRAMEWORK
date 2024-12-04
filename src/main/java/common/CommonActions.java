@@ -1,13 +1,15 @@
 package common;
+//CMS Common Actions
 
 
 
 
 
-
+import java.io.File;
 import java.util.List;
 import java.util.Set;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -276,6 +278,45 @@ public class CommonActions {
 					}
 				}
 				
+				public static void clickUsingJavascriptExecutor(WebDriver driver, WebElement element) {
+					// JavascriptExecutor js = (JavascriptExecutor)driver; // instead of writing this 'js' object
+					// we can write below way, (JavascriptExecutor)driver is "js"
+					//Car car =new Car() 
+					//Car() can call methods too.. Car().name()
+					// You have to type JavascriptExecutor to import org.openqa.selenium.JavascriptExecutor;
+					// "arguments[0].click()", will be same for everyone, Thats why we kept it that way.
+					// Or we can below method which has been commented out
+					((JavascriptExecutor)driver).executeScript("arguments[0].click()", element);
+					Loggers.logTheTest("JavascriptExecutor executing ..." + " arguments[0].click()" + " to click on element ---> " + element);
+				}
 				
+				
+				//public static void clickUsingJavascriptExecutorScript(WebDriver driver,String script, WebElement element) {
+				//	((JavascriptExecutor)driver).executeScript(script, element);
+					//Loggers.logTheTest("JavascriptExecutor executing ..." + " arguments[0].click()" + " to click on element ---> " + element);
+				//}
+				
+				
+				
+				public static void inputTextUsingJavascriptExecutor(WebDriver driver, String script, WebElement element) {
+					//We wrote below way because script="arguments[0].value='August 2024 QA' " will be different for different users
+					//script : String from PopUP
+					
+					((JavascriptExecutor) driver).executeScript(script, element);
+					Loggers.logTheTest("JavascriptExecutor executing ..." + script + " to input Text on element ---> " + element);
+				}
+				
+				
+				public static void scrollIntoViewTheElementUsingJavascriptExecutor(WebDriver driver, WebElement element) {
+					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)", element);
+					Loggers.logTheTest("JavascriptExecutor executing ..." + " arguments[0].scrollIntoView(true)" + " to input Text on element ---> " + element);
+				}	
+				
+				// This is for Enthrall IT photo upload common action, not needed for CMS
+				public static void uploadPhotoImage(WebElement element, String location) {
+					File file = new File(location);
+					element.sendKeys(file.getAbsolutePath());
+					pause(4000);
+				}
 				
 }

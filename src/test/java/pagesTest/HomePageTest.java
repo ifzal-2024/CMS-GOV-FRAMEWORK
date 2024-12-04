@@ -1,5 +1,7 @@
 package pagesTest;
 
+import java.awt.AWTException;
+
 import org.testng.annotations.Test;
 
 import baseUtil.BaseClass;
@@ -211,4 +213,91 @@ public class HomePageTest extends BaseClass {
 			
 		}
 		
+		@Test()
+		public void alternate_of_click_method_test() {
+			homePage.alternate_of_click_method();
+		}
+		
+		@Test()
+		public void alternate_of_send_keys_method_test() {
+			homePage.alternate_of_send_keys_method();
+		}
+		
+		@Test()
+		public void login_process_by_JavascriptExecutor__common_method_test() {
+			homePage.login_process_by_JavascriptExecutor_common_method();
+		}
+		
+		@Test
+		public void how_to_handle_hidden_element_by_regular_selenium_method_test() {
+		homePage.how_to_handle_hidden_element_by_regular_selenium_method();
+		
+		}
+		
+		
+		@Test
+		public void how_to_handle_hidden_element_by_javascriptExecutor_test_01() {
+			homePage.how_to_handle_hidden_element_by_javascriptExecutor_01();
+		}
+		
+		
+		
+		@Test
+		void how_to_handle_hidden_element_by_javascriptExecutor_02_test() {
+		homePage.how_to_handle_hidden_element_by_javascriptExecutor_02();
+						
+		}
+		
+		@Test
+		public void use_of_scroll_down_and_up_by_actions_class_test() {
+		homePage.use_of_scroll_down_and_up_by_actions_class();
+		}
+		
+		
+		@Test
+		public void use_of_scroll_down_and_scroll_up_by_robot_class () throws InterruptedException, AWTException {
+			homePage.use_of_scroll_down_and_scroll_up_by_robot_class();
+		}
+		
+		
+		@Test
+		public void use_of_scroll_down_and_up_In_A_Certain_Pixel_by_javascriptExecutor_test () {
+			homePage.use_of_scroll_down_and_up_In_A_Certain_Pixel_by_javascriptExecutor();
+		}
+		
+		@Test
+		public void scroll_into_view_the_element_test() {
+			homePage.scroll_into_view_the_element();
+		}
+		
+		@Test
+		public void scroll_into_view_the_element_by_commonActions_test() {
+			homePage.scroll_into_view_the_element_by_commonActions();
+		}
+		
+		
+
+		@Test
+		public void web_based_alert_accept_test () {
+			homePage.web_based_alert_accept();		
+		}
+		
+		@Test
+		public void web_based_alert_dismiss_test () {
+			homePage.web_based_alert_dismiss();		
+		}
+		
+
+		
+		@Test
+		public void  authentication_pop_up_test () throws InterruptedException {
+			homePage. authentication_pop_up ();
+		}
+		
+		
+		
+		
+		
+		
 }
+

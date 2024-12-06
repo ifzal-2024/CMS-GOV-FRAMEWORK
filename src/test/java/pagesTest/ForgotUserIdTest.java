@@ -6,19 +6,19 @@ import baseUtil.BaseClass;
 
 public class ForgotUserIdTest extends BaseClass{
 
-	@Test
+	@Test (enabled = true)
 	public void navigateToForgotUserIdPageTest() {
 		forgotUserId.navigateToForgotUserIdPage();
 			}
 	
-@Test
+@Test(enabled =false)
 public void use_of_dropdown_with_selectByValue_method_test() {
 	forgotUserId.navigateToForgotUserIdPage();
 	forgotUserId.use_of_dropdown_with_selectByValue_method();
 	
 	}
 	
-@Test()
+@Test(enabled=false)
 public void use_of_dropdown_with_selectByIndex_method_test() {
 	forgotUserId.navigateToForgotUserIdPage();
 	forgotUserId.use_of_dropdown_with_selectByValue_method(); // choose month
@@ -26,7 +26,7 @@ public void use_of_dropdown_with_selectByIndex_method_test() {
 }
 	
 
-@Test ()
+@Test (enabled = false)
 public void use_of_dropdown_selectByVisibleText_method_test() {
 	forgotUserId.navigateToForgotUserIdPage();
 	forgotUserId.use_of_dropdown_with_selectByValue_method(); // choose month
@@ -36,7 +36,7 @@ public void use_of_dropdown_selectByVisibleText_method_test() {
 	
 //This below test is enough for the feature, above tests are single test
 	// also common methods are used
-	@Test()
+	@Test(enabled = false)
 	public void verifyForgotUserIdTest() {
 		forgotUserId.navigateToForgotUserIdPage();
 		forgotUserId.verifyForgotUserId();

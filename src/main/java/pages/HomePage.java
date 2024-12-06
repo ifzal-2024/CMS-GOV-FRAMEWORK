@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import common.CommonActions;
+import constants.Attribute;
 
 import static common.CommonActions.*;
 
@@ -833,18 +834,77 @@ public class HomePage {
 			verifyTextOfTheWebElement(authentication, "Congratulations! You must have the proper credentials.");
 		}
 			
-			
+
 		// This is for Enthrall IT photo upload, not needed for CMS
 		public void photoIdUpload() {
 			pause(4000);
-			File pi = new File("./image/personalImage.jpg");
+			driver.get("https://enthrallit.com/course/dashboard/enrolls/");
+			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			pause(5000);
+			File pi = new File("./image/EnthrallIT_Persona_Image.jpg");
 			WebElement personalImage = driver.findElement(By.xpath("//input[@name='image']"));
 			personalImage.sendKeys(pi.getAbsolutePath());
 			pause(4000);
-			File phid = new File("./image/photoId.png");
+			File phid = new File("./image/EnthrallIT_Photo_Id.jpg");
 			WebElement photoId = driver.findElement(By.xpath("//input[@name='photo_id']"));
 			photoId.sendKeys(phid.getAbsolutePath());
 			pause(4000);
+		}
+		
+		
+		// This is for Enthrall IT photo upload, not needed for CMS
+		public void photoIdUpload_common_action() {
+			pause(4000);
+			driver.get("https://enthrallit.com/course/dashboard/enrolls/");
+			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			pause(5000);
+			WebElement personalImage = driver.findElement(By.xpath("//input[@name='image']"));
+			uploadPhotoImage(personalImage, "./image/EnthrallIT_Persona_Image.jpg" );
+			pause(4000);
+			WebElement photoId = driver.findElement(By.xpath("//input[@name='photo_id']"));
+			uploadPhotoImage(photoId,"./image/EnthrallIT_Photo_Id.jpg");
+			pause(4000);
+
+		}
+		
+		
+		// This is for Enthrall IT firstName
+		public void first_name_validation() {
+			pause(4000);
+			driver.get("https://enthrallit.com/course/dashboard/enrolls/");
+			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			pause(5000);
+			// create webelement on the top of the message, at the beginning
+			WebElement firstName = driver.findElement(By.xpath("//input[@name='f_name']"));
+			verifyLengthOfTheFieldContent(firstName, Attribute.MAX_LENGTH, "20");
+			inputTextThenClickTab(firstName, "%&^%&^");
+			pause(3000);
+			WebElement alphabeticCharactersErrorMessageUnderTheField = driver.findElement(By.xpath("//small[text()='Must be alphabetic characters.']"));
+			verifyErrorMessageUnderTheField(alphabeticCharactersErrorMessageUnderTheField, Attribute.INNER_HTML, "Must be alphabetic characters.");
+			pause(3000);
+			clearTextFromTheField(firstName);
+			WebElement fNameRequiredFiledErrorMesssage = driver.findElement(By.xpath("//small[text()='First Name is a required field.']"));
+			pause(3000);
+			verifyErrorMessageUnderTheField(fNameRequiredFiledErrorMesssage, Attribute.INNER_HTML, "First Name is a required field.");
+			pause(3000);
+			inputTextThenClickTab(firstName, "635462534");
+			pause(3000);
+			verifyErrorMessageUnderTheField(alphabeticCharactersErrorMessageUnderTheField, Attribute.INNER_HTML, "Must be alphabetic characters.");
+			pause(3000);
+			clearTextFromTheField(firstName);
+			pause(3000);
+			inputText(firstName, "Moha-mma'd Tofael Sh"); // expected First Name with allowed character
+			pause(3000);
+			
+			
+			
+			
+			
+			
+			
 		}
 		
 }

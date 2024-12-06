@@ -1,37 +1,73 @@
 package baseUtil;
-//CMS Base Class
+import java.lang.reflect.Method;
+
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
+
+import common.CommonActions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.ForgotUserId;
 import pages.HomePage;
+import reports.ExtentReportManager;
+import reports.TestManager;
 import utils.Configuration;
 
 import static utils.IConstant.*;
 
+//CMS Base Class
 public class BaseClass {
 	public WebDriver driver;
 	public HomePage homePage;
   Configuration configuration;
   public ForgotUserId forgotUserId;
-	
+  ExtentReports extentReports;
+  ExtentTest extentTest;
+  
+  @BeforeSuite
+  public void ininitalReporting() {
+	  extentReports = ExtentReportManager.initalReports();
+	  }
+  
+  @BeforeClass
+  public void beforeClassSetUp() {
+	  configuration= new Configuration();
+	   }
+  
+  @BeforeMethod
+  public void initialTest(Method method) {
+	  extentTest=TestManager.createTest(extentReports, method.getName());
+	  extentTest.assignAuthor(method.getDeclaringClass().getName());
+	  
+  }
+  
+  @Parameters("browser") 
+  //@Optional(EDGE)
+  
 	@BeforeMethod
-	public void setUp() {
-		configuration= new Configuration();
-		initDriver();
-						
+	public void setUp(@Optional (FIREFOX) String browserName) {//
+		initDriver(browserName);//
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies(); 
 		
 		driver.get(configuration.getProperties(URL));
-		//driver.manage().window().fullscreen();
+		driver.manage().window().fullscreen();
 		
 		// How can we convert a String to Long type
 		//Long.parseLong(configuration.getProperties(PAGELOAD_WAIT));
@@ -44,8 +80,8 @@ public class BaseClass {
 		
 	}
 	
-	public void initDriver() {
-		String browserName = configuration.getProperties(BROWSER);
+	public void initDriver(String browserName){
+		//String browserName = configuration.getProperties(BROWSER);
 		
 		switch (browserName) {
 		
@@ -86,18 +122,24 @@ public class BaseClass {
 		driver.quit();
 	}
 
-	
-	//Here is the Summary
-	// create config.properties file in src/main/resources
-	// create utils package
-	// Inside utils, create enum Constant, Interface IConstant, Configuration class
-	// Bring changes in Base class
-	// static import necessary for ---> import static utils.IConstant.*
 
+	@AfterMethod
+	public void afterEachTest(Method method, ITestResult result) {
+		for(String group: result.getMethod().getGroups()) {
+			extentTest.assignCategory(group);
+		}		
+		if(result.getStatus() == ITestResult.SUCCESS) {
+			extentTest.log(Status.PASS, "Test PASSED");
+		}else if(result.getStatus() == ITestResult.FAILURE) {
+			extentTest.addScreenCaptureFromPath(CommonActions.getSreenShot(method.getName(), driver));
+			extentTest.log(Status.FAIL, "Test FAILED");
+		}else if(result.getStatus() == ITestResult.SKIP) {
+			extentTest.log(Status.SKIP, "Test SKIPPED");
+		}
+	}
 	
-	 //WebDriverManager.firefoxdriver().setup();
-	 //driver = new FirefoxDriver();
-
-	 //WebDriverManager.edgedriver().setup();
-	 //driver = new EdgeDriver();
+	@AfterSuite
+	public void publishReport() {
+		extentReports.flush();
+	}
 }

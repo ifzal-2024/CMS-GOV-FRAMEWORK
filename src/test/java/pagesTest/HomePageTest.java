@@ -310,6 +310,93 @@ public class HomePageTest extends BaseClass {
 			homePage.first_name_validation();
 		}
 		
+		@Test
+		public void use_of_explicitly_wait_01_test() {
+			homePage.use_of_explicitly_wait_01();
+		}
+		
+		@Test
+		public void use_of_explicitly_wait_02_test(){
+			homePage.use_of_explicitly_wait_02();
+			
+			
+		}
+		
+		@Test
+		public void use_of_explicitly_wait_03_test(){
+			homePage.use_of_explicitly_wait_03();
+		}
+		
+		@Test
+		public void use_of_explicitly_wait_04_test(){
+			homePage.use_of_explicitly_wait_04();
+			
+		}
+		
+		@Test
+		public void use_of_explicitly_wait_05_test(){
+			homePage.use_of_explicitly_wait_05();
+		}
+		
+		
+		@Test
+		public void use_of_explicitly_wait_from_common_waits_test(){	
+			homePage.use_of_explicitly_wait_from_common_waits();
+		}
+		
+		@Test
+		public void set_a_specific_size_for_window_test() {
+			homePage.set_a_specific_size_for_window();
+			
+		}
+		@Test
+		public void use_of_right_click_action_test() {
+			homePage.use_of_right_click_action();
+		}
+		
+		@Test
+		public void use_of_double_click_action_test() {
+			homePage.use_of_double_click_action();
+			}
+		
+		@Test
+		public void use_of_drag_and_drop_action_test () {
+			homePage.use_of_drag_and_drop_action();
+		}
+		
+		@Test
+		public void use_of_slider_action_test () {
+			homePage.use_of_slider_action();
+			
+		}
+		
+		@Test
+		public void read_table_test () {
+			homePage.read_table();
+		}
+		
+		@Test
+		public void read_any_row_of_the_table_test () {
+			homePage.read_any_row_of_the_table();
+			
+		}
+
+		@Test
+		public void read_any_cell_of_a_row_of_the_table_test () {
+			homePage.read_any_cell_of_a_row_of_the_table();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 }
 

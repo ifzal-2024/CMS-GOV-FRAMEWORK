@@ -1,5 +1,5 @@
 package common;
-//CMS Common Actions
+
 
 
 
@@ -33,6 +33,7 @@ import com.google.common.io.Files;
 import constants.Attribute;
 import reports.Loggers;
 
+//CMS Common Actions
 public class CommonActions {
 	WebDriver driver;
 	

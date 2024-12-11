@@ -3,6 +3,7 @@ import java.lang.reflect.Method;
 
 import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -39,6 +40,7 @@ public class BaseClass {
   public ForgotUserId forgotUserId;
   ExtentReports extentReports;
   ExtentTest extentTest;
+  public JavascriptExecutor js;
   
   @BeforeSuite
   public void ininitalReporting() {
@@ -114,7 +116,7 @@ public class BaseClass {
 	public void initClass() {
 		homePage = new HomePage(driver);
 		forgotUserId = new ForgotUserId(driver);
-		
+		js = (JavascriptExecutor) driver;
 	}
 	
 	@AfterMethod

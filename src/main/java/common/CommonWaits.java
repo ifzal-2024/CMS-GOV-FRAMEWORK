@@ -2,6 +2,7 @@ package common;
 
 
 import java.time.Duration;
+
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.WebDriver;
@@ -12,6 +13,7 @@ import org.testng.Assert;
 
 import reports.Loggers;
 
+//CMS CommonWaits
 public class CommonWaits {
 	
 	

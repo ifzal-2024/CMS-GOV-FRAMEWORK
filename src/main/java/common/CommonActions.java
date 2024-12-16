@@ -310,13 +310,13 @@ public class CommonActions {
 					// "arguments[0].click()", will be same for everyone, Thats why we kept it that way.
 					// Or we can below method which has been commented out
 					((JavascriptExecutor)driver).executeScript("arguments[0].click()", element);
-					Loggers.logTheTest("JavascriptExecutor executing ..." + " arguments[0].click()" + " to click on element ---> " + element);
+					Loggers.logTheTest("JavascriptExecutor executing ..." + " arguments[0].click()" + " Element has been clicked------> " + element);
 				}
 				
 				
 				//public static void clickUsingJavascriptExecutorScript(WebDriver driver,String script, WebElement element) {
 				//	((JavascriptExecutor)driver).executeScript(script, element);
-					//Loggers.logTheTest("JavascriptExecutor executing ..." + " arguments[0].click()" + " to click on element ---> " + element);
+					//Loggers.logTheTest("JavascriptExecutor executing ..." + " arguments[0].click()" + " Element has been clicked ---> " + element);
 				//}
 				
 				

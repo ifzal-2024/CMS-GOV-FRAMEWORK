@@ -26,6 +26,7 @@ import common.CommonActions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.ForgotUserId;
 import pages.HomePage;
+import pages.NewUserRegistration;
 import reports.ExtentReportManager;
 import reports.TestManager;
 import utils.Configuration;
@@ -36,6 +37,7 @@ import static utils.IConstant.*;
 public class BaseClass {
 	public WebDriver driver;
 	public HomePage homePage;
+	public NewUserRegistration newUserRegistration;
   Configuration configuration;
   public ForgotUserId forgotUserId;
   ExtentReports extentReports;
@@ -115,6 +117,7 @@ public class BaseClass {
 	
 	public void initClass() {
 		homePage = new HomePage(driver);
+		newUserRegistration = new NewUserRegistration(driver);
 		forgotUserId = new ForgotUserId(driver);
 		js = (JavascriptExecutor) driver;
 	}

@@ -26,6 +26,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.security.PublicKey;
 import java.time.Duration;
 import java.util.Set;
 
@@ -60,11 +61,18 @@ public class HomePage {
 	// Use of unique 'name' attribute as locator
 	@FindBy(name = "user-d")
 	WebElement userId;
+	
+
 
 	// 2nd way to create a WebElement: not common, here I used for the 'password'
 	// Just to make you guys familiar, if you see in your job
 	@FindBy(how = How.NAME, using = "pass-d")
 	WebElement password;
+	
+	
+	// @FindBy(xpath = "//a[@id='cms-newuser-reg' and @class='cms-newuser-reg']")
+	// @FindBy(xpath = "//a[text()='New User Registration']")
+	
 
 	// Use of unique 'class' attribute as locator
 	// FYI: Never take a class value as unique if they have white space between
@@ -72,15 +80,19 @@ public class HomePage {
 	// Example: class value of logo, this is unique, but a compound class -->
 	// "cms-icon cms-sprite-loggedout ms-3"
 	@FindBy(className = "cms-newuser-reg")
-	// @FindBy(xpath = "//a[@id='cms-newuser-reg' and @class='cms-newuser-reg']")
-	// @FindBy(xpath = "//a[text()='New User Registration']")
 	WebElement newUserRegistration;
+	
+	
 
 	// 3rd way to create a WebElement with "By" Class:
 	// Not common, here I used "unlock" web element from the home page
 	// instead of xpath, we can use id, name, class etc as locator.
-	// By unlock = By.id("cms-unlock-account");
-	By unlock = By.xpath("//a[@id='cms-unlock-account']");
+	By unlock = By.id("cms-unlock-account"); 
+	//By unlock = By.xpath("//a[@id='cms-unlock-account']"); 
+	
+	
+	
+	
 
 	@FindBy(xpath = "//label[@id='cms-label-tc']")
 	WebElement termsAndCondition;
@@ -173,10 +185,13 @@ public class HomePage {
 
 	// Not common, just for your reference
 	public void clickUnlock() throws InterruptedException {
-		driver.findElement(unlock).click();
+		pause(3000);
+		//driver.findElement(unlock).click(); 
 		pause(5000);
 	}
 
+	
+	
 	// We are using sendKeys() method to input the text in userId field
 	public void inputTextInUserIdField() {
 		pause(3000);
@@ -1272,4 +1287,90 @@ public class HomePage {
 		//Assert.assertFalse(false, "Application Logo is not displayed"); // false false means true
 	}
 
+	
+
+	// Below Testing
+		public void loginButtonDummy() {
+			pause(3000);
+			driver.findElement(By.id("cms-login-submit")).click();
+			pause(3000);
+			
+		}
+		
+	
+		
+		public void userIdDummy() {
+			pause(3000);
+			driver.findElement(By.name("user-d")).click();
+			pause(3000);
+		}
+		
+		
+		public void newUserRegDummy() {
+			pause(3000);
+			driver.findElement(By.className("cms-newuser-reg")).click();
+			pause(3000);
+		}
+		
+		
+		// 2nd way to create a WebElement: not common, here I used for the 'password'
+		// Just to make you guys familiar, if you see in your job
+		@FindBy(how = How.NAME, using = "pass-d")
+		WebElement passwordelElement;
+		
+		public void clickPasswordElementDummy() {
+			clickElement(passwordelElement);
+			pause(3000);
+		}
+		
+		
+		
+		public void tableAmazon() {
+			pause(5000);
+			driver.get("https://www.amazon.com/ref=nav_logo");
+			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+			pause(5000);
+			// actions = new Actions(driver);
+			actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).perform();
+			pause(5000);
+			driver.findElement(By.tagName("table")).click();
+			pause(5000);
+			
+				
+		}
+		
+	
+		//TDD HomePage
+		
+		public void landing_on_homePage() {
+			elementDisplayed(logo);
+			// If there is a header/sub header present, validate here
+			verifyTitle(driver, "CMS Enterprise Portal");
+			// getCurrentUrl needed when you move to other pages from landing page not needed here.
+			
+		}
+		
+		public void click_to_new_user_registration() {
+			pause(3000);
+			elementEnabled(newUserRegistration);
+			verifyTextOfTheWebElement(newUserRegistration, "New User Registration");
+			clickElement(newUserRegistration);
+			pause(5000);
+		}
+		
+		/*
+		 We can also validate:
+		  Application
+		  Help
+		  About
+		  Footer Logo
+		  Footer Text
+		  & Rest
+		 */
+		
+		
+		
+		
+		
 }
